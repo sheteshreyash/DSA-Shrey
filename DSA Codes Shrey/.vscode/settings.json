@@ -1,0 +1,5 @@
+{
+  "DockerRun.DisableAutoGenerateConfig": true,
+  "git.ignoreLimitWarning": true,
+  "C_Cpp.errorSquiggles": "disabled"
+}
