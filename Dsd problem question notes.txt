@@ -1,0 +1,32 @@
+Trees + Graphs Medium Level 
+
+
+1) Inorder - Preorder - Postorder * 
+2) Iterative - Recursive 
+3) Max - Min element in BST
+4) Size of BST
+5) Height of BST
+6) Level order traversal
+7) Implementation of Stack using Queue 
+8) using Linked List
+9) Various Sorting algo (Quick, Merge etc)
+10) valid Parentheses
+11) 3 sum , 2 Sum
+12) Fibonacci Series
+13) Shallow Copy vs Deep Copy --
+14) Book Allocation
+15) /* for printing       *
+                        * *
+                      * * *
+                    * * * *         */
+
+16) continuous maximum subarray sum
+17) Single element in a sorted array
+18) Spiral Matrix
+19) Reverse in K-Group Linked List
+20) Delete Middle pointer of doubly linked list
+21) Enqueue - Dequeue
+22) Merge to Sorted List
+23) LCA of BST 
+24) Maximum SubArray
+
