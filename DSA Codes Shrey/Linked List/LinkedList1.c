@@ -6,7 +6,7 @@
 struct Node
 {
     int data;
-    struct Node* next;
+    struct Node* next;  //Self referencing structure
 };
 
 void listTraversal(struct Node *ptr) {
@@ -16,7 +16,6 @@ void listTraversal(struct Node *ptr) {
         ptr = ptr->next;
     }
 }
-
 int main()
 {
     //Implementation 1 :- Using Hardcoded values 
@@ -40,7 +39,6 @@ int main()
     // third->next = NULL;   //Terminate the list at last (third) node
 
     // listTraversal(head); // Head is a pointer of struct node* type
-
 
 
 
