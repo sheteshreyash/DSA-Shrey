@@ -1,4 +1,4 @@
-// Types of Insertion in a Doubly Linked List
+// Types of Insertion in a Circular Linked List
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,7 +9,7 @@ struct Node
     struct Node* next;  //Self referencing structure
 };
 
-void listTraversalDoublylist(struct Node *head) {  //function for traversal of doubly linked list
+void listTraversalCircularlist(struct Node *head) {  //function for traversal of Circular linked list
 
     if (head == NULL)
     {
@@ -22,11 +22,10 @@ void listTraversalDoublylist(struct Node *head) {  //function for traversal of d
     {
         printf("Element is : %d\n", ptr->data);
         ptr = ptr->next;
-    } while (ptr != head);
-    
+    } while (ptr != head && ptr != NULL); // Add condition to break if ptr is NULL
 }
 
-struct Node *insertAtFirst(struct Node *head, int data) {  // Case 1
+struct Node *insertAtFirst(struct Node *head, int data) {  // Case 1 : Insert element at first node/beginning
     struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
     ptr->data = data;
 
@@ -40,27 +39,98 @@ struct Node *insertAtFirst(struct Node *head, int data) {  // Case 1
     head = ptr;
     return head;
 }
-void deallocateMemory(struct Node *head)
-{
-    if (head == NULL)
-    {
-        return;
+
+struct Node* insertAtIndex(struct Node* head, int data, int index) {  // Case 2 : Insert Element at a given index in Circular LinkedList
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *p = head;
+    int i = 0;
+
+    ptr->data = data;     // Insert at the beginning (index 0)
+    if (index == 0) {
+        ptr->next = head;
+        head = ptr;
+        return head; // Update the head to point to the new node
     }
 
+    while (i < (index-1) && p->next != head)
+    {
+        p = p->next;
+        i++;
+    }
+
+    if (i < (index - 1)) {
+        printf("Invalid index.\n");
+        free(ptr); // Free the allocated memory if the index is out of bounds
+        return head;
+    }
+
+    ptr->next = p->next;
+    p->next = ptr;
+    return head;
+}
+
+struct Node* insertAtlast(struct Node* head, int data) {  // Case 3 : Insert Element at the end in LinkedList
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    ptr->data = data;
+
+    if (head == NULL) {
+        ptr->next = ptr; // For an empty list, make the new node point to itself
+        head = ptr;
+        return head;      // Update the head to point to the new node
+    }
+
+    struct Node *p = head;
+    while (p->next != head)
+    {
+        p = p->next;
+    }
+    p->next = ptr;
+    ptr->next = head;
+    head = ptr;
+    return head;
+}
+
+struct Node* insertAfterNode(struct Node* head,struct Node *prevNode, int data) {  // Case 4 : Insert Element after a node in Circular LinkedList
+    
+    if (head == NULL || prevNode == NULL) {
+        printf("Invalid arguments.\n");
+        return head;
+    }
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    if (ptr == NULL) {
+        printf("Memory allocation failed.\n");
+        return head;
+    }
+
+    ptr->data = data;
+    ptr->next = NULL;
+    if (prevNode->next == head) {    // Insert after the last node, making it circular
+        ptr->next = head;
+        prevNode->next = ptr;
+        head = ptr; // update head to the first node 
+    }
+    else{          // Insert in between nodes
+        ptr->next = prevNode->next;
+        prevNode->next = ptr;
+    }
+    return head;
+}
+
+void deallocateMemory(struct Node *head) {
     struct Node *current = head;
     struct Node *nextNode;
-    do
-    {
+
+    while (current != NULL) {
         nextNode = current->next;
         free(current);
         current = nextNode;
-    } while (current != head);
+    }
 }
 
 int main()
 {
     int size;
-    printf("Enter the size of the circular linked list: ");
+    printf("Enter the size of the Circular linked list: ");
     scanf("%d", &size);
 
     if (size <= 0)
@@ -97,19 +167,55 @@ int main()
     }
 
     printf("\nCircular Linked List created successfully.\n");
-    listTraversalDoublylist(head);
+    listTraversalCircularlist(head);
 
     //Case 1 :- Element to be added at the Beginning/first Node 
-    int val;
+    int val,index;
     printf("\n1) Enter the Node Value to be added at Beginning of List : ");
     scanf("%d", &val);
     head = insertAtFirst(head, val);// new element that to be updated at first node
     printf("\nUpdated Circular Linked List after inserting a new node at beginning:\n");
-    listTraversalDoublylist(head);
+    listTraversalCircularlist(head);
     //
 
-    // Case 2 :- Element to be added at a given index
+    //Case 2 :- Element to be added in between two nodes 
+    printf("\n2) Enter the Node Value to be added in between two nodes: ");
+    scanf("%d",&val);
+    printf("\nEnter Index : ");
+    scanf("%d", &index);
+    head = insertAtIndex(head, val, index);
+    printf("\nUpdated Circular Linked List after inserting new Element in between two nodes at given index:\n");
+    listTraversalCircularlist(head);
     //
+    // Note :- In this part, we cannot update the already updated head value from case 1 ie. Index 0
+    
+
+    // Case 3 :- Insert Element at the End/Last node in Circular Linked List
+    printf("\n3) Enter the Node Value to be inserted at last position : ");
+    scanf("%d", &val);
+    head = insertAtlast(head, val);
+    printf("\nUpdated Circular Linked List after inserting a new node at end:\n");
+    listTraversalCircularlist(head);
+    //
+
+    // Case 4 :- Insert Element after a Node with Given pointer 
+    printf("\n4) Enter Element to be inserted after a Node : ");
+    scanf("%d", &val);
+    printf("\nEnter index of the Node after which value is to be inserted : ");
+    scanf("%d", &index);
+
+    for (int i = 0; i < index; ++i) {
+        if (prevNode == NULL) {
+        printf("Invalid index.\n");
+        return 1;
+        }
+        prevNode = prevNode->next;
+    }   
+    head = insertAfterNode(head, prevNode, val);
+    printf("\nUpdated Circular Linked List after inserting a new node after a particular node at given index:\n");
+    listTraversalCircularlist(head);
+    //
+
     deallocateMemory(head);
     return 0;
 }

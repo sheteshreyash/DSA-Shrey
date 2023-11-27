@@ -1,4 +1,4 @@
-// Creation and Traversal of a Doubly Linked List
+// Creation and Traversal of a Circular Linked List
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,7 +9,7 @@ struct Node
     struct Node* next;  //Self referencing structure
 };
 
-void listTraversalDoublylist(struct Node *head) {  //function for traversal of doubly linked list
+void listTraversalCircularlist(struct Node *head) {  //function for traversal of Circular linked list
 
     if (head == NULL)
     {
@@ -65,13 +65,13 @@ int main()
     // third->data = 88;    
     // third->next = head;   //Terminate the list at last (third) node
 
-    // listTraversalDoublylist(head); // Head is a pointer of struct node* type
+    // listTraversalCircularlist(head); // Head is a pointer of struct node* type
 
 
 
     // Implementation 2: - Creating doubly linked list using dynamic allocation
     int size;
-    printf("Enter the size of the circular linked list: ");
+    printf("Enter the size of the Circular linked list: ");
     scanf("%d", &size);
 
     if (size <= 0)
@@ -108,7 +108,7 @@ int main()
     }
 
     printf("\nCircular Linked List created successfully.\n");
-    listTraversalDoublylist(head);
+    listTraversalCircularlist(head);
 
     deallocateMemory(head);
     return 0;

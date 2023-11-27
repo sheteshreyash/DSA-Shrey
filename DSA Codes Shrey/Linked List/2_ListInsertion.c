@@ -70,8 +70,6 @@ struct Node* insertAfterNode(struct Node* head,struct Node *prevNode, int data) 
     return head;
 }
 
-
-
 int main()
 {
     struct Node *head = NULL;
