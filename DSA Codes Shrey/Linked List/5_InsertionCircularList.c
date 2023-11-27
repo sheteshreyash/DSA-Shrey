@@ -108,6 +108,8 @@ int main()
     listTraversalDoublylist(head);
     //
 
+    // Case 2 :- Element to be added at a given index
+    //
     deallocateMemory(head);
     return 0;
 }
