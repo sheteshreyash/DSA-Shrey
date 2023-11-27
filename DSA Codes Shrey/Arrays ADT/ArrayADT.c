@@ -1,7 +1,7 @@
 // Implementation of ADT for an Abstract Array using Structure and pointer
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h>  
 
 struct myArray   // this is abstract data type of array
 {

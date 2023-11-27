@@ -96,7 +96,7 @@ struct Node* insertAfterNode(struct Node* head,struct Node *prevNode, int data) 
         printf("Invalid arguments.\n");
         return head;
     }
-    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));  // Asking to dynamically allocate memory in heap section
     if (ptr == NULL) {
         printf("Memory allocation failed.\n");
         return head;
@@ -116,7 +116,7 @@ struct Node* insertAfterNode(struct Node* head,struct Node *prevNode, int data) 
     return head;
 }
 
-void deallocateMemory(struct Node *head) {
+void deallocateMemory(struct Node *head) {  // Free the requested memory in heap section 
     struct Node *current = head;
     struct Node *nextNode;
 
@@ -187,7 +187,7 @@ int main()
     printf("\nUpdated Circular Linked List after inserting new Element in between two nodes at given index:\n");
     listTraversalCircularlist(head);
     //
-    // Note :- In this part, we cannot update the already updated head value from case 1 ie. Index 0
+    // Note :- In this part, we cannot update the already updated head value from case 1 ie. Index 0 howerever we can make changes to other nodes
     
 
     // Case 3 :- Insert Element at the End/Last node in Circular Linked List
