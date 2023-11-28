@@ -1,4 +1,4 @@
-// Creation and Traversal(forward and reverse) of doubly linked list
+// Various cases of insertion in a doubly linked list
 
 #include <stdio.h>
 #include <stdlib.h>
