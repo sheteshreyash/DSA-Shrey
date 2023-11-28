@@ -1,3 +1,5 @@
+// Various cases of Deletion in Circular Linked list
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -115,7 +117,7 @@ struct Node *deleteLastNodeCircularll(struct Node *head)  // Case 3
     return head;
 }
 
-struct Node *deleteAtGivenValueCircularll(struct Node *head, int value)
+struct Node *deleteAtGivenValueCircularll(struct Node *head, int value) // Case 4
 {
     if (head == NULL)
     {
