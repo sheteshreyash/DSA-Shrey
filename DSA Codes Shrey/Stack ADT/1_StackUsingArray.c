@@ -1,4 +1,4 @@
-// Implementation of Stack using Array 
+// Implementation of Stack using Array with push(), pop() and peek() operations
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,8 +32,9 @@ struct stack  // this is a stack structure consist of array size, top value and 
 //     }
 // }
 
+#define EMPTY -1
 int isStackEmpty(struct stack *ptr) {  // Check if the stack is empty (Updated)
-    return (ptr->top == -1);
+    return (ptr->top == EMPTY);
 }
 
 int isStackFull(struct stack *ptr) {   // Check if the stack is full (Updated)
@@ -68,6 +69,32 @@ void printStack(struct stack *ptr) {  // function for printing stack
     printf("\n");
 }
 
+int peekStack(struct stack *ptr, int position) {   // peek stack function
+    if (isStackEmpty(ptr) || position < 0 || position > ptr->top) {
+        printf("Invalid position to peek\n");
+        return -1; // Assuming -1 as an error value
+    } else {
+        return ptr->arr[ptr->top - position];
+    }
+}    
+
+int stackTop(struct stack *ptr) {   // Function to get the top element of the stack
+    if (isStackEmpty(ptr)) {
+        printf("Stack is empty\n");
+        return -1; // Assuming -1 as an error value
+    } else {
+        return ptr->arr[ptr->top];
+    }
+}
+
+int stackBottom(struct stack *ptr) {  // Function to get the bottom element of the stack
+    if (isStackEmpty(ptr)) {
+        printf("Stack is empty\n");
+        return -1; // Assuming -1 as an error value
+    } else {
+        return ptr->arr[0];
+    }
+}
 
 int main(int argc, char const *argv[])
 {
@@ -116,10 +143,24 @@ int main(int argc, char const *argv[])
         pushIntoStack(s, element);
     }
 
-    printf("\nOriginal Stack : \n");   
+    printf("\n1) Original Stack : \n");   
     printStack(s);   // Original stack
 
-    printf("\nPop operations:\n");       // Popping elements from the stack
+
+    printf("\n2) Peek operation:\n");    // Peek operations
+    int peekPosition;
+    printf("Enter the position to peek (0 for top): ");
+    scanf("%d", &peekPosition);
+
+    if (!isStackEmpty(s)) {
+        int peekedElement = peekStack(s, peekPosition);
+        if (peekedElement != -1) {
+            printf("\nElement at position %d is: %d\n", peekPosition, peekedElement);
+        }
+    }
+
+
+    printf("\n3) Pop operations:\n");       // Popping elements from the stack
     int popOption;
     do {
     printf("\nEnter 1 to pop the topmost element ");
@@ -151,6 +192,10 @@ int main(int argc, char const *argv[])
     } else {
     printStack(s);   // Updated stack
     }
+
+    printf("\n4) Top and Bottom of the stack..");
+    printf("\nTop Element of the Stack: %d\n", stackTop(s));
+    printf("Bottom Element of the Stack: %d\n", stackBottom(s));
     
     free(s->arr);
     free(s);

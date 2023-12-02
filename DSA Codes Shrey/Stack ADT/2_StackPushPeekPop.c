@@ -1,4 +1,4 @@
-// CWH code for push(), pop() functions..already implemented in first code
+// CWH code for push(), pop() and peek() functions..already implemented in first code
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -49,6 +49,26 @@ int pop(struct stack* ptr){
     }
 }
 
+int peek(struct stack* sp, int i){
+    int arrayInd = sp->top -i + 1;
+    if(arrayInd < 0){
+        printf("Not a valid position for the stack\n");
+        return -1;
+    }
+    else{
+        return sp->arr[arrayInd];
+    }
+}
+
+int stackTop(struct stack* sp){
+    return sp->arr[sp->top];
+}
+
+int stackBottom(struct stack* sp){
+    return sp->arr[0];
+}
+
+
 int main(){
     struct stack *sp = (struct stack *) malloc(sizeof(struct stack));
     sp->size = 10;
@@ -56,6 +76,7 @@ int main(){
     sp->arr = (int *) malloc(sp->size * sizeof(int));
     printf("Stack has been created successfully\n");
 
+    //push operations
     printf("Before pushing, Full: %d\n", isFull(sp));
     printf("Before pushing, Empty: %d\n", isEmpty(sp));
     
@@ -72,6 +93,23 @@ int main(){
     // push(sp, 46); // Stack Overflow since the size of the stack is 10
     printf("After pushing, Full: %d\n", isFull(sp));
     printf("After pushing, Empty: %d\n", isEmpty(sp));
+
+
+    // Printing values from the stack (peek function)
+    for (int j = 1; j <= sp->top + 1; j++)
+    {
+        printf("The value at position %d is %d\n", j, peek(sp, j));
+    }
+
+    // pop operations
+    printf("Popped %d from the stack\n", pop(sp)); // --> Last in first out!
+    printf("Popped %d from the stack\n", pop(sp)); // --> Last in first out!
+    printf("Popped %d from the stack\n", pop(sp)); // --> Last in first out!
+
+
+    //peek operations
+    printf("The top most value of this stack is %d\n", stackTop(sp));
+    printf("The bottom most value of this stack is %d\n", stackBottom(sp));
 
     return 0;
 }
