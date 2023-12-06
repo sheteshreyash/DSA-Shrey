@@ -17,6 +17,7 @@ void cleanup(void) {
     if (globalStackPointer != NULL) {
         free(globalStackPointer->arr);
         free(globalStackPointer);
+        globalStackPointer = NULL; // Set the global pointer to NULL after freeing
     }
 }
 
@@ -116,8 +117,10 @@ int main() {
     printf("Enter the stack size: ");
     scanf("%d", &stackSize);
 
-    printf("postfix is %s", infixToPostfix(infix, stackSize));
+    char *postfix = infixToPostfix(infix, stackSize);
+    printf("postfix is %s", postfix);
 
     cleanup();  // manually free the memory at end
+    free(postfix);
     return 0;
 }
