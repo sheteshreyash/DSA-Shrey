@@ -163,6 +163,7 @@ int main() {
     char exp[100];
     int stackSize;
 
+    printf("\nParenthesis Matching Code \n");
     printf("Enter the expression: ");
     scanf("%s", exp);
 
