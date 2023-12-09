@@ -75,7 +75,7 @@ int main()
         }
     }
 
-    printf("Linked List:\n");       // Traverse and print the linked list
+    printf("\nLinked List:\n");       // Traverse and print the linked list
     listTraversal(head);
 
     // Free the allocated memory
