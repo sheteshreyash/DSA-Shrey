@@ -87,7 +87,6 @@ int main() {
     q->f = q->r = -1;
 
     int choice, element;
-
     while (1) {
         printf("\nQueue Operations:\n");
         printf("1. Enqueue\n");
