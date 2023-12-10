@@ -46,7 +46,7 @@ int main(int argc, char const *argv[])
     int arr[arrSize];
     inputArray(arr, arrSize);
 
-    printf("Enter the element to search: ");  // Input the element to search
+    printf("\nEnter the element to search: ");  // Input the element to search
     scanf("%d", &element);
 
     int searchIndex = linearSearch(arr, arrSize, element);   // Perform linear search
