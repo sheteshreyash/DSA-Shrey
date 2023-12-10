@@ -1,7 +1,7 @@
 // C Code to Implement Bubble sort algorithm
 
 #include <stdio.h>
-// #include <stdlib.h>  // No Need to dynamically allocate heap memory 
+// #include <stdlib.h> 
 
 void printArray(int *A, int n) {
     for (int i = 0; i < n; i++) {
@@ -70,10 +70,19 @@ int main() {
     printf("Enter elements of the array (up to %d elements):\n", n);
     for (int i = 0; i < n; i++) {
         if (i >= n) {
+            printf("Array is Full. Overflow condition\n");
             break;
         }
+        else {
         scanf("%d", &A[i]);
+        }
     }
+
+    // int count = 0;
+    // while (count < n) {
+    //     scanf("%d", &A[count]);
+    //     count++;
+    // }
 
     printf("\nArray before sorting:\n");
     printArray(A, n);
