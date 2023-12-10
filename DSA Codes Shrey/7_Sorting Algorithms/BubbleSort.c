@@ -58,9 +58,20 @@ int main() {
     printf("Enter the size of the array: ");
     scanf("%d", &n);
 
+    // Logic 1 :- Array size is fixed and have to fill the array completely
+    // int A[n];   
+    // printf("Enter %d elements of the array:\n", n);
+    // for (int i = 0; i < n; i++) {
+    //     scanf("%d", &A[i]);
+    // }
+
+    // Logic 2 :- Can fill Array elements less than or equal to total array size (flexible)
     int A[n];
-    printf("Enter %d elements of the array:\n", n);
+    printf("Enter elements of the array (up to %d elements):\n", n);
     for (int i = 0; i < n; i++) {
+        if (i >= n) {
+            break;
+        }
         scanf("%d", &A[i]);
     }
 
