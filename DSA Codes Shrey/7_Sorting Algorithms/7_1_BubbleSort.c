@@ -1,7 +1,6 @@
 // C Code to Implement Bubble sort algorithm
 
 #include <stdio.h>
-// #include <stdlib.h> 
 
 void printArray(int *A, int n) {
     for (int i = 0; i < n; i++) {
@@ -59,30 +58,11 @@ int main() {
     scanf("%d", &n);
 
     // Logic 1 :- Array size is fixed and have to fill the array completely
-    // int A[n];   
-    // printf("Enter %d elements of the array:\n", n);
-    // for (int i = 0; i < n; i++) {
-    //     scanf("%d", &A[i]);
-    // }
-
-    // Logic 2 :- Can fill Array elements less than or equal to total array size (flexible)
-    int A[n];
-    printf("Enter elements of the array (up to %d elements):\n", n);
+    int A[n];   
+    printf("Enter %d elements of the array:\n", n);
     for (int i = 0; i < n; i++) {
-        if (i >= n) {
-            printf("Array is Full. Overflow condition\n");
-            break;
-        }
-        else {
         scanf("%d", &A[i]);
-        }
     }
-
-    // int count = 0;
-    // while (count < n) {
-    //     scanf("%d", &A[count]);
-    //     count++;
-    // }
 
     printf("\nArray before sorting:\n");
     printArray(A, n);
@@ -101,3 +81,5 @@ int main() {
 
     return 0;
 }
+
+// Doubt in logic 2 where user can insert less elements than given array size but getting errors 
