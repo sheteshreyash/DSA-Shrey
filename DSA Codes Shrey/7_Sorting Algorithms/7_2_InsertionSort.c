@@ -1,4 +1,4 @@
-// C code for Insertion Sort 
+// C code for Insertion Sort
 
 #include <stdio.h>
 
@@ -39,7 +39,7 @@ int main() {
     scanf("%d", &n);
 
     // Logic 1 :- Array size is fixed and have to fill the array completely
-    int A[n];   
+    int A[n];
     printf("Enter %d elements of the array:\n", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &A[i]);
@@ -66,8 +66,8 @@ int main() {
    //      07, 12, 23, 54,| 65, 09 --> After the 4th pass
 
    //      07, 12, 23, 54, 65,| 09 --> i=5, key=09, j=4
-   //      07, 09, 12, 23, 54, 65| --> After the 5th pass 
-    
+   //      07, 09, 12, 23, 54, 65| --> After the 5th pass
+
 
     if (choice == 1) {
         insertionSort(A, n);
@@ -79,4 +79,3 @@ int main() {
     printArray(A, n);
     return 0;
 }
-
