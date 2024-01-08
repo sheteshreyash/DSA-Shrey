@@ -1,4 +1,4 @@
-// C code for Circular Queue Implementation 
+// C code for Circular Queue Implementation
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -7,7 +7,7 @@ struct queue
 {
     int size;
     int f;  // frontInd for Deletion(Dequeue) purpose
-    int r;   // RearInd for Insetion(Enqueue) purpose
+    int r;   // RearInd for Insertion(Enqueue) purpose
     int* arr;
 };
 
@@ -67,7 +67,7 @@ void peekQueue(struct queue *q) {
     }
 }
 
-int main() {
+    int main() {
     struct queue *q = (struct queue *)malloc(sizeof(struct queue));  // Dynamically allocating memory for the queue
     if (q == NULL) {
         printf("Memory allocation failed. Cannot create Queue\n");

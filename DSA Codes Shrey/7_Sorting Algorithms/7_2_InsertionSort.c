@@ -26,7 +26,6 @@ void insertionSort(int *A, int n){  // Insertion Sort Function
     }
 }
 
-
 int main() {
     int choice;
     printf("\nInsertion Sort Algorithm \n");

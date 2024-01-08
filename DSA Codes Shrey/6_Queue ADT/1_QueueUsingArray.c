@@ -7,7 +7,7 @@ struct queue
 {
     int size;
     int f;  // frontInd for Deletion(Dequeue) purpose
-    int r;   // RearInd for Insetion(Enqueue) purpose
+    int r;   // RearInd for Insertion(Enqueue) purpose
     int* arr;
 };
 

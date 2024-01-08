@@ -12,7 +12,7 @@ void printArray(int *A, int n) {
 void bubbleSort(int *A, int n) {  // Time Complexity O(n^2) worst case and Space complexity O(1) no additional or extra memory space required
     int temp;
     for (int i = 0; i < n - 1; i++) { // for no of passes
-        printf("Working on pass number %d\n", i+1); 
+        printf("Working on pass number %d\n", i+1);
 
         for (int j = 0; j < n - 1 - i; j++) {  // for comparison in each pass
             if (A[j] > A[j + 1]) {
@@ -58,7 +58,7 @@ int main() {
     scanf("%d", &n);
 
     // Logic 1 :- Array size is fixed and have to fill the array completely
-    int A[n];   
+    int A[n];
     printf("Enter %d elements of the array:\n", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &A[i]);

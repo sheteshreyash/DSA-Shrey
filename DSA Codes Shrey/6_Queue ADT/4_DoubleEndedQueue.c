@@ -117,7 +117,7 @@ int main() {
 
     int choice, element;
     while (1) {
-        printf("\nDEQeque Operations:\n");
+        printf("\nDEQueue Operations:\n");
         printf("1. Enqueue at Front\n");
         printf("2. Enqueue at Rear\n");
         printf("3. Dequeue from Front\n");
