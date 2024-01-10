@@ -67,7 +67,7 @@ int main() {
 
     selectionSort(A, n);
 
-    printf("Array after Bubble Sort:\n");
+    printf("Array after Selection Sort:\n");
     printArray(A, n);
     return 0;
 }
