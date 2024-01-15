@@ -83,3 +83,7 @@ int main()
     printArray(A, n);
     return 0;
 }
+
+// Worst Case time complexity = O(n^2) where array is already sorted
+// best case time complexity = O(nlogn) not always true
+// average case time complexity = O(nlogn)
