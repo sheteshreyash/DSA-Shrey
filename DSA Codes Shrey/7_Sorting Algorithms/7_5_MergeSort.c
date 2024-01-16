@@ -11,45 +11,99 @@ void printArray(int *A, int n)
     printf("\n");
 }
 
-void merge(int A[], int mid, int low, int high) //merge function for merging two subarrays in same array
+// void merge(int A[], int mid, int low, int high) //merge function for merging two subarrays in same array
+// {
+//     int i, j, k, B[100];
+//     i = low;
+//     j = mid + 1;
+//     k = low;
+
+//     while (i <= mid && j <= high)
+//     {
+//         if (A[i] < A[j])
+//         {
+//             B[k] = A[i];
+//             i++;
+//             k++;
+//         }
+//         else
+//         {
+//             B[k] = A[j];
+//             j++;
+//             k++;
+//         }
+//     }
+//     while (i <= mid)
+//     {
+//         B[k] = A[i];
+//         k++;
+//         i++;
+//     }
+//     while (j <= high)
+//     {
+//         B[k] = A[j];
+//         k++;
+//         j++;
+//     }
+//     for (int i = low; i <= high; i++)
+//     {
+//         A[i] = B[i];
+//     }
+// }
+
+
+void merge(int A[], int mid, int low, int high)  // efficient implementation considering temporary memory allocation of array B
 {
-    int i, j, k, B[100];
-    i = low;
-    j = mid + 1;
+    int i, j, k;
+    int n1 = mid - low + 1;
+    int n2 = high - mid;
+
+    // Create temporary arrays
+    int L[n1], R[n2];
+
+    // Copy data to temporary arrays L[] and R[]
+    for (i = 0; i < n1; i++)
+        L[i] = A[low + i];
+    for (j = 0; j < n2; j++)
+        R[j] = A[mid + 1 + j];
+
+    // Merge the temporary arrays back into A[low..high]
+    i = 0;
+    j = 0;
     k = low;
 
-    while (i <= mid && j <= high)
+    while (i < n1 && j < n2)
     {
-        if (A[i] < A[j])
+        if (L[i] <= R[j])
         {
-            B[k] = A[i];
+            A[k] = L[i];
             i++;
-            k++;
         }
         else
         {
-            B[k] = A[j];
+            A[k] = R[j];
             j++;
-            k++;
         }
-    }
-    while (i <= mid)
-    {
-        B[k] = A[i];
         k++;
+    }
+
+    // Copy the remaining elements of L[], if there are any
+    while (i < n1)
+    {
+        A[k] = L[i];
         i++;
-    }
-    while (j <= high)
-    {
-        B[k] = A[j];
         k++;
-        j++;
     }
-    for (int i = low; i <= high; i++)
+
+    // Copy the remaining elements of R[], if there are any
+    while (j < n2)
     {
-        A[i] = B[i];
+        A[k] = R[j];
+        j++;
+        k++;
     }
 }
+
 
 void mergeSort(int A[], int low, int high) // mergeSort function for sorting elements
 {
