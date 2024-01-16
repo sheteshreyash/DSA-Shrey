@@ -70,7 +70,7 @@ int main() {
 
     if (choice == 1) {
         insertionSort(A, n);
-        printf("Array after Bubble Sort:\n");
+        printf("Array after Insertion Sort:\n");
     } else {
         printf("Invalid choice\n");
         return 1; // Exit with an error code

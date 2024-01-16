@@ -138,7 +138,7 @@ int main()
 
     mergeSort(A, 0, n-1);
 
-    printf("Array after Quick Sort:\n");
+    printf("Array after Merge Sort:\n");
     printArray(A, n);
     return 0;
 }
