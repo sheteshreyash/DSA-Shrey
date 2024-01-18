@@ -1,0 +1,12 @@
+1) Preorder traversal :- (Root left right)
+   first draw lines to the left side of every node
+   start from root node and take the pickup points
+
+2) Postorder traversal :- (left right root)
+   First draw lines to the right side of every node
+   start from root node but ensure that root node will always remains at the last
+
+3) Inorder traversal :- (left root right)
+   First draw lines to the bottom side of every node
+   start traversing from root node but ensure that the bottom left node will always remain first
+
