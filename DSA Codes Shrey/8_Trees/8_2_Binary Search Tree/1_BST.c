@@ -58,17 +58,17 @@ void inOrder(struct node *root)  // inorder traversal
     }
 }
 
-int isBST(struct node *root, struct node *prev)  // important function
+int isBST(struct node *root, struct node **prev)  // important function
 {
     if (root != NULL)
     {
         if (!isBST(root->left, prev))
             return 0;
 
-        if (prev != NULL && root->data <= prev->data)
+        if ((*prev) != NULL && root->data <= (*prev)->data)
             return 0;
 
-        prev = root;
+        *prev = root;
         return isBST(root->right, prev);
     }
     else
@@ -98,12 +98,12 @@ int main()
     }
 
     struct node *root = constructBST(inorder, 0, numNodes - 1);
-
+    struct node *prev = NULL;
     printf("In-order traversal: ");
     inOrder(root);
     printf("\n");
 
-    if (isBST(root, NULL))
+    if (isBST(root, &prev))
     {
         printf("This is a BST.\n");
     }
