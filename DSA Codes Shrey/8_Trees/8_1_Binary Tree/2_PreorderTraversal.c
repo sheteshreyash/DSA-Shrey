@@ -44,7 +44,7 @@ void freeTree(struct node *root)  // free the allocated memory function
     }
 }
 
-struct node *constructBT(int *inorder, int start, int end)
+struct node *constructBT(int *inorder, int start, int end)  // construct binary tree
 {
     if (start > end)
         return NULL;
@@ -58,7 +58,7 @@ struct node *constructBT(int *inorder, int start, int end)
     return root;
 }
 
-void preOrder(struct node *root)
+void preOrder(struct node *root)  // preorder function
 {
     if (root != NULL)
     {
@@ -78,11 +78,11 @@ void preOrder(struct node *root)
 //     struct node *p3 = createNode(5);
 //     struct node *p4 = createNode(2);
 //     // Finally The tree looks like this:
-//     //      4
-//     //     / \
-//     //    1   6
-//     //   / \
-//     //  5   2
+    //      4
+    //     / \
+    //    1   6
+    //   / \
+    //  5   2
 
 //     // Linking the root node with left and right children
 //     p->left = p1;
