@@ -1,4 +1,5 @@
-// C code for search operation in BST
+// C code for recursive search operation in BST
+// Time complexity lies between (logn <= h <= n)
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -77,7 +78,7 @@ int isBST(struct node *root, struct node **prev)
     }
 }
 
-int searchBST(struct node *root, int key)
+int searchBST(struct node *root, int key)  // REcursive search
 {
     while (root != NULL)
     {
@@ -95,6 +96,7 @@ int searchBST(struct node *root, int key)
 int main()
 {
     int numNodes;
+    printf("C Code for Recursive search operation in BST \n");
     printf("Enter the number of nodes: ");
     scanf("%d", &numNodes);
 
