@@ -1,4 +1,4 @@
-// C code for Insertion operation in BST
+// C code for deletion operation in bst
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,16 +48,6 @@ struct node *constructBST(int *inorder, int start, int end)
     return root;
 }
 
-void inOrder(struct node *root)
-{
-    if (root != NULL)
-    {
-        inOrder(root->left);
-        printf("%d ", root->data);
-        inOrder(root->right);
-    }
-}
-
 int isBST(struct node *root, struct node **prev)
 {
     if (root != NULL)
@@ -77,53 +67,68 @@ int isBST(struct node *root, struct node **prev)
     }
 }
 
-struct node *insertBST(struct node *root, int key)  // insertion operation in bst
+void inOrder(struct node *root)
 {
-    struct node *newNode = createNode(key);
+    if (root != NULL)
+    {
+        inOrder(root->left);
+        printf("%d ", root->data);
+        inOrder(root->right);
+    }
+}
+
+struct node *findMin(struct node *root) // identify the minumum value
+{
+    while (root->left != NULL)
+        root = root->left;
+    return root;
+}
+
+struct node *deleteNode(struct node *root, int key) // deletion function
+{
     if (root == NULL)
+        return root;
+
+    if (key < root->data)
     {
-        return newNode;
+        root->left = deleteNode(root->left, key);
     }
-
-    struct node *current = root;
-    struct node *parent = NULL;
-
-    while (current != NULL)
+    else if (key > root->data)
     {
-        parent = current;
-        if (key < current->data)
-        {
-            current = current->left;
-        }
-        else if (key > current->data)
-        {
-            current = current->right;
-        }
-        else
-        {
-            // Duplicate keys are not allowed in this implementation
-            printf("Duplicate key %d found.\n", key);
-            free(newNode); // Free the allocated memory for the new node
-            return root;
-        }
-    }
-
-    if (key < parent->data) // At this point, 'parent' is the node where the new node should be attached
-    {
-        parent->left = newNode;
+        root->right = deleteNode(root->right, key);
     }
     else
     {
-        parent->right = newNode;
+        // Node with only one child or no child
+        if (root->left == NULL)
+        {
+            struct node *temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL)
+        {
+            struct node *temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        // Node with two children: Get the inorder successor (smallest in the right subtree)
+        struct node *temp = findMin(root->right);
+
+        // Copy the inorder successor's content to this node
+        root->data = temp->data;
+
+        // Delete the inorder successor
+        root->right = deleteNode(root->right, temp->data);
     }
     return root;
 }
 
-
 int main()
 {
     int numNodes;
-    printf("C Code for insertion operation in BST\n");
+    printf("C Code for Deletion operation in BST\n");
     printf("Enter the number of nodes: ");
     scanf("%d", &numNodes);
 
@@ -150,23 +155,28 @@ int main()
     {
         printf("This is a BST.\n");
 
-        int insertKey;
-        printf("Enter the key to insert into the BST: ");
-        scanf("%d", &insertKey);
+        int deleteKey;
+        printf("Enter the key to delete from the BST: ");
+        scanf("%d", &deleteKey);
 
-        root = insertBST(root, insertKey);
-
-        printf("In-order traversal after insertion: ");
-        inOrder(root);
-        printf("\n");
+        root = deleteNode(root, deleteKey);
+        if (root == NULL)
+        {
+            printf("Key %d not found in the BST.\n", deleteKey);
+        }
+        else
+        {
+            printf("In-order traversal after deletion: ");
+            inOrder(root);
+            printf("\n");
+        }
     }
     else
     {
-        printf("This is not a BST. Searching and insertion are not applicable.\n");
+        printf("This is not a BST. Deletion not applicable.\n");
     }
 
     freeTree(root);
     free(inorder);
-
     return 0;
 }
