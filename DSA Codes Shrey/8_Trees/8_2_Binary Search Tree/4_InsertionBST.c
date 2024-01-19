@@ -162,7 +162,7 @@ int main()
     }
     else
     {
-        printf("This is not a BST. Searching and insertion are not applicable.\n");
+        printf("This is not a BST. Insertion is not applicable.\n");
     }
 
     freeTree(root);

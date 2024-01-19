@@ -141,7 +141,7 @@ int main()
     }
     else
     {
-        printf("This is not a BST. Searching is not applicable.\n");
+        printf("This is not a BST. Recursive Searching is not applicable.\n");
     }
 
     freeTree(root);
