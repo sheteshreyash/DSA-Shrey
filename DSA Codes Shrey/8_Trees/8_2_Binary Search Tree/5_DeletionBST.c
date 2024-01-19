@@ -155,25 +155,33 @@ int main()
     {
         printf("This is a BST.\n");
 
-        int deleteKey;
-        printf("Enter the key to delete from the BST: ");
-        scanf("%d", &deleteKey);
+        while (1) // Loop to allow multiple deletions
+        {
+            int deleteKey;
+            printf("Enter the key to delete from the BST (Enter -1 to exit): \n");
+            scanf("%d", &deleteKey);
 
-        root = deleteNode(root, deleteKey);
-        if (root == NULL)
-        {
-            printf("Key %d not found in the BST.\n", deleteKey);
-        }
-        else
-        {
-            printf("In-order traversal after deletion: ");
-            inOrder(root);
-            printf("\n");
+            if (deleteKey == -1)
+                break; // Exit the loop if -1 is entered
+
+            root = deleteNode(root, deleteKey);
+
+            if (root == NULL)
+            {
+                printf("Key %d not found in the BST.\n", deleteKey);
+                break; // Exit the loop if the key is not found
+            }
+            else
+            {
+                printf("In-order traversal after deletion: ");
+                inOrder(root);
+                printf("\n");
+            }
         }
     }
     else
     {
-        printf("This is not a BST. Deletion not applicable.\n");
+        printf("This is not a BST. Searching and insertion are not applicable.\n");
     }
 
     freeTree(root);
