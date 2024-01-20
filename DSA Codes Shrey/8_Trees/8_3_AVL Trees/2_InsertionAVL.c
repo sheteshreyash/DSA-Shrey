@@ -48,7 +48,7 @@ int height(struct node *root)  // calculating max height of the tree
     return root->height;
 }
 
-int getBalance(struct node *root)  // balancing the bst into avl tree
+int getBalance(struct node *root)  // balancing the bst into avl tree (balance factor)
 {
     if (root == NULL)
         return 0;
