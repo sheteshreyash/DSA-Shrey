@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>  
+#include <stdlib.h>
 
 void func1(int array[], int length)  {
     int sum = 0;
@@ -20,9 +20,9 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-/* We will split this program into 3 parts, first one is int, second is for loop and third is 
+/* We will split this program into 3 parts, first one is int, second is for loop and third is
 another for loop  */
 
-/*   Tn = k1 + k2N + k3N which will automatically considered as N 
+/*   Tn = k1 + k2N + k3N which will automatically considered as N
     therefore the time complexity will be Tc = O(length)
 */

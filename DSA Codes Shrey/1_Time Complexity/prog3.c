@@ -1,6 +1,6 @@
 /* Consider the recursive algo below, Where the random(int n) spends one unit of time to return
-    a random integer which is evenly distributed within the range of [0, n]. If the average 
-    processing time is T(n), what is the value of T(6) where other system calls don't take that 
+    a random integer which is evenly distributed within the range of [0, n]. If the average
+    processing time is T(n), what is the value of T(6) where other system calls don't take that
     much time ?                  */
 
 #include <stdio.h>
