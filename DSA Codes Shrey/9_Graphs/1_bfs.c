@@ -1,4 +1,4 @@
-// C code for implementing bfs traversal of graph data structure
+// C code for implementing bfs traversal of a graph
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -54,15 +54,16 @@ void freeMemory(struct queue *q)
     free(q->arr);
 }
 
-void bfs(int startNode, int size, int **a, int *visited, struct queue *q)
+void bfs(int startNode, int size, int **a, int *visited, struct queue *q, int *bfsOrder)
 {
+    int orderIndex = 0;
     visited[startNode] = 1;
     enqueue(q, startNode);
 
     while (!isEmpty(q))
     {
         int node = dequeue(q);
-        printf("%d ", node);
+        bfsOrder[orderIndex++] = node;
 
         for (int j = 0; j < size; j++)
         {
@@ -75,20 +76,19 @@ void bfs(int startNode, int size, int **a, int *visited, struct queue *q)
     }
 }
 
-void inorderTraversal(int startNode, int size, int **a, int *visited, struct queue *q)
+void inorderTraversal(int startNode, int size, int **a, int *visited, struct queue *q, int *bfsOrder)
 {
-    if (visited[startNode] == 0)
-    {
-        visited[startNode] = 1;
+    bfs(startNode, size, a, visited, q, bfsOrder);
+    printf("Inorder Traversal starting from node %d: ", startNode);
 
-        for (int j = 0; j < size; j++)
+    for (int i = 0; i < size; i++)
+    {
+        int node = bfsOrder[i];
+        if (visited[node] == 0)
         {
-            if (a[startNode][j] == 1 && visited[j] == 0)
-            {
-                inorderTraversal(j, size, a, visited, q);
-            }
+            inorderTraversal(node, size, a, visited, q, bfsOrder);
         }
-        printf("%d ", startNode);
+        printf("%d ", node);
     }
 }
 
@@ -97,11 +97,11 @@ int main()
     int queueSize, matrixSize, startNode;
 
     // Input queue size
-    printf("Enter the maximum number of elements in the graph (queue size): ");
+    printf("Enter the maximum number of elements in the graph (queue size): \n");
     scanf("%d", &queueSize);
 
     // Input adjacency matrix size
-    printf("Enter the size of the adjacency matrix: ");
+    printf("Enter the size of the adjacency matrix (a*a): \n");
     scanf("%d", &matrixSize);
 
     // Initializing Adjacency Matrix
@@ -112,7 +112,7 @@ int main()
     }
 
     // Inputting values into the Adjacency Matrix
-    printf("Enter the adjacency matrix:\n");
+    printf("Enter the adjacency matrix: \n");
     for (int i = 0; i < matrixSize; i++)
     {
         for (int j = 0; j < matrixSize; j++)
@@ -139,8 +139,13 @@ int main()
     }
 
     // BFS Implementation
+    int *bfsOrder = (int *)malloc(matrixSize * sizeof(int));
     printf("BFS Traversal: ");
-    bfs(startNode, matrixSize, adjMatrix, visited, &q);
+    bfs(startNode, matrixSize, adjMatrix, visited, &q, bfsOrder);
+    for (int i = 0; i < matrixSize; i++)
+    {
+        printf("%d ", bfsOrder[i]);
+    }
     printf("\n");
 
     // Reset visited array
@@ -150,12 +155,12 @@ int main()
     }
 
     // Inorder Traversal
-    printf("Inorder Traversal starting from node %d: ", startNode);
-    inorderTraversal(startNode, matrixSize, adjMatrix, visited, &q);
+    inorderTraversal(startNode, matrixSize, adjMatrix, visited, &q, bfsOrder);
     printf("\n");
 
     // Freeing allocated memory
     freeMemory(&q);
+    free(bfsOrder);
 
     for (int i = 0; i < matrixSize; i++)
     {
@@ -163,6 +168,5 @@ int main()
     }
     free(adjMatrix);
     free(visited);
-
     return 0;
 }
