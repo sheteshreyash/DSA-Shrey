@@ -1,13 +1,13 @@
-Trees + Graphs Medium Level 
+Trees + Graphs Medium Level
 
 
-1) Inorder - Preorder - Postorder * 
-2) Iterative - Recursive 
+1) Inorder - Preorder - Postorder *
+2) Iterative - Recursive
 3) Max - Min element in BST
 4) Size of BST
 5) Height of BST
 6) Level order traversal
-7) Implementation of Stack using Queue 
+7) Implementation of Stack using Queue
 8) using Linked List
 9) Various Sorting algo (Quick, Merge etc)
 10) valid Parentheses
@@ -27,6 +27,6 @@ Trees + Graphs Medium Level
 20) Delete Middle pointer of doubly linked list
 21) Enqueue - Dequeue
 22) Merge to Sorted List
-23) LCA of BST 
+23) LCA of BST
 24) Maximum SubArray
 
