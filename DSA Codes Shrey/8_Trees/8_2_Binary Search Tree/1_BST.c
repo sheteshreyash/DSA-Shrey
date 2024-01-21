@@ -64,10 +64,8 @@ int isBST(struct node *root, struct node **prev)  // important function
     {
         if (!isBST(root->left, prev))
             return 0;
-
         if ((*prev) != NULL && root->data <= (*prev)->data)
             return 0;
-
         *prev = root;
         return isBST(root->right, prev);
     }
