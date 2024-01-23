@@ -24,8 +24,7 @@ Trees + Graphs Medium Level
 17) Spiral Matrix
 18) Reverse in K-Group Linked List
 19) Delete Middle pointer of doubly linked list
-20) Enqueue - Dequeue
-21) Merge to Sorted List
-22) LCA of BST
-23) Maximum SubArray
+20) Merge to Sorted List
+21) LCA of BST
+22) Maximum SubArray
 

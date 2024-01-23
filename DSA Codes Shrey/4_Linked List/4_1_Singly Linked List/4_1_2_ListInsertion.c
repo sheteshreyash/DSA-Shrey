@@ -1,4 +1,4 @@
-// Various cases of Insertion in a Linked List 
+// Various cases of Insertion in a Linked List
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -107,7 +107,7 @@ int main()
     printf("\nLinked List:\n");  // Traverse and print the linked list
     listTraversal(head);
 
-    //Case 1 :- Element to be added at the Beginning/first Node 
+    //Case 1 :- Element to be added at the Beginning/first Node
     int val, index;
     printf("\n1) Enter the Node Value to be added at Beginning of List : ");
     scanf("%d", &val);
@@ -116,7 +116,7 @@ int main()
     listTraversal(head);
     //
 
-    //Case 2 :- Element to be added in between two nodes 
+    //Case 2 :- Element to be added in between two nodes
     printf("\n2) Enter the Node Value to be added in between two nodes : ");
     scanf("%d",&val);
     printf("\nEnter Index No : ");
@@ -134,7 +134,7 @@ int main()
     listTraversal(head);
     //
 
-    // Case 4 :- Insert Element after a Node with Given pointer 
+    // Case 4 :- Insert Element after a Node with Given pointer
     printf("\n4) Enter the Value to be inserted after a Node : ");
     scanf("%d", &val);
     printf("\nEnter index of the Node after which value is to be inserted : ");
@@ -147,7 +147,7 @@ int main()
         return 1;
         }
         prevNode = prevNode->next;
-    }   
+    }
     head = insertAfterNode(head, prevNode, val);
     printf("\nUpdated Linked List after inserting a new node after a particular node at given index:\n");
     listTraversal(head);
@@ -161,7 +161,6 @@ int main()
         head = head->next;
         free(temp);
     }
-
     return 0;
 }
 
