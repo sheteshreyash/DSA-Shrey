@@ -1,11 +1,11 @@
 // C program for identifying the element in an sorted array which only appears once
 // A Linear Search based function to find the element that appears only once
 
+// https://www.geeksforgeeks.org/find-the-element-that-appears-once-in-a-sorted-array/
+
 #include <stdio.h>
 #include <stdlib.h>
 
-// A Linear Search based function to find
-// the element that appears only once
 int search(int arr[], int n)
 {
     int ans = -1;
@@ -17,10 +17,8 @@ int search(int arr[], int n)
             break;
         }
     }
-
     if (arr[n - 2] != arr[n - 1])
         ans = arr[n - 1];
-
     return ans;
 }
 
