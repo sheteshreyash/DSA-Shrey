@@ -18,7 +18,7 @@ void listTraversal(struct Node *ptr) {
 }
 int main()
 {
-    //Implementation 1 :- Using Hardcoded values 
+    //Implementation 1 :- Using Hardcoded values
     // struct Node *head;
     // struct Node *second;
     // struct Node *third;
@@ -28,21 +28,21 @@ int main()
     // second = (struct Node *)malloc(sizeof(struct Node));
     // third = (struct Node *)malloc(sizeof(struct Node));
 
-    //Linking the nodes  
-    // head->data = 7;    
+    //Linking the nodes
+    // head->data = 7;
     // head->next = second;   //link first and second node
-    
-    // second->data = 78;    
+
+    // second->data = 78;
     // second->next = third;   //link second and third node
 
-    // third->data = 88;    
+    // third->data = 88;
     // third->next = NULL;   //Terminate the list at last (third) node
 
     // listTraversal(head); // Head is a pointer of struct node* type
 
 
 
-    // Implementation 2 :- Using values for user 
+    // Implementation 2 :- Using values for user
     struct Node *head = NULL;
     struct Node *current = NULL;
     int n; // Number of nodes
