@@ -25,6 +25,6 @@ Trees + Graphs Medium Level
 18) Reverse in K-Group Linked List
 19) Delete Middle pointer of doubly linked list
 20) Merge to Sorted List
-21) LCA of BST
+21) finding the lowest common ancestor (LCA) of BST
 22) Maximum SubArray
 
